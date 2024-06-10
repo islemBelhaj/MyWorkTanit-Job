@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminBackController!{% endblock %}
+
+{% block body %}
+    <h1>Offres emplois</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>NbrePostVacant</th>
+            <th>RemunirationPropose</th>
+            <th>DescriptionEmploi</th>
+            <th>Experience</th>
+            <th>Statut</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for offre in offres %}
+            <tr>
+                <td>{{ offre.id }}</td>
+                <td>{{ offre.titre }}</td>
+                <td>{{ offre.nbrePostVacant }}</td>
+                <td>{{ offre.remunirationPropose }}</td>
+                <td>{{ offre.descriptionEmploi }}</td>
+                <td>{{ offre.experience }} ans</td>
+                <td>
+                    {% if offre.statut == 0 %}
+                        <p>En Attente</p>
+                    {% elseif offre.statut == 1 %}
+                        <p>Acceptée</p>
+                    {% elseif offre.statut == 2 %}
+                        <p>Refusée</p>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ path('app_admin_back_id', {id: offre.id, idAccept: offre.id}) }}" class="btn btn-success">Accepter</a>
+                    <a href="{{ path('app_admin_back_id', {id: offre.id, idRefus: offre.id}) }}" class="btn btn-danger">Refuser</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

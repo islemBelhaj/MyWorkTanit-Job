@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription Employeur{% endblock %}
+
+{% block body %}
+    <h1>Inscription Employeur</h1>
+
+    {{ form_start(registrationFormEmployeur) }}
+    {{ form_row(registrationFormEmployeur.email) }}
+    {{ form_row(registrationFormEmployeur.plainPassword) }}
+    {{ form_row(registrationFormEmployeur.nom) }}
+    {{ form_row(registrationFormEmployeur.prenom) }}
+    {{ form_row(registrationFormEmployeur.logo) }}
+    {{ form_row(registrationFormEmployeur.identfiantUnique) }}
+    {{ form_row(registrationFormEmployeur.telephone) }}
+    {{ form_row(registrationFormEmployeur.nomEntreprise) }}
+    {{ form_row(registrationFormEmployeur.civilite) }}
+    {{ form_row(registrationFormEmployeur.secteurActivite) }}
+
+    <button type="submit" class="btn btn-primary">S'inscrire</button>
+    {{ form_end(registrationFormEmployeur) }}
+{% endblock %}
